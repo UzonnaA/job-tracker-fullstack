@@ -50,4 +50,4 @@ jobs:
         run: npm ci
 
       - name: Run frontend tests
-        run: npm test -- --ci --passWithNoTests
+        run: npm test

@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "test": "jest --watch",
+    "test": "jest --ci --passWithNoTests",
     "start": "next start",
     "lint": "next lint"
   },

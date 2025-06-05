@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import org.springframework.http.MediaType;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -26,7 +27,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Collections;
 
-import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -37,7 +38,7 @@ class JobApplicationControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @Autowired
+    @MockBean
     private JobApplicationRepository repository;
 
     private final ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
@@ -62,7 +63,8 @@ class JobApplicationControllerTest {
     void testCreateApplication() throws Exception {
         JobApplication app = new JobApplication("Dev", "Company", "APPLIED", LocalDate.now(), List.of("remote"));
         app.setUser(user);
-        repository.save(app);
+
+        when(repository.save(any())).thenReturn(app);
 
         mockMvc.perform(post("/api/applications")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -75,7 +77,8 @@ class JobApplicationControllerTest {
     void testGetApplications_noFilters() throws Exception {
         JobApplication app = new JobApplication("Dev", "Company", "APPLIED", LocalDate.now(), List.of("remote"));
         app.setUser(user);
-        repository.save(app);
+
+        when(repository.findByUser(any())).thenReturn(List.of(app));
 
         mockMvc.perform(get("/api/applications"))
                 .andExpect(status().isOk())
@@ -84,6 +87,8 @@ class JobApplicationControllerTest {
 
     @Test
     void testDeleteAllApplications() throws Exception {
+        doNothing().when(repository).deleteByUser(any());
+
         mockMvc.perform(delete("/api/applications"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("All applications deleted."));
@@ -93,7 +98,8 @@ class JobApplicationControllerTest {
     void testGetStats() throws Exception {
         JobApplication app = new JobApplication("Dev", "Company", "APPLIED", LocalDate.now(), List.of("remote"));
         app.setUser(user);
-        repository.save(app);
+
+        when(repository.findByUser(any())).thenReturn(Collections.singletonList(app));
 
         mockMvc.perform(get("/api/applications/stats"))
                 .andExpect(status().isOk())
