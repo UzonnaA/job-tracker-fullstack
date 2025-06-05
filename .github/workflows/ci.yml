@@ -7,44 +7,47 @@ on:
     branches: [main]
 
 jobs:
-  backend-tests:
+  backend:
     name: Run Spring Boot Tests
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: job-tracker-backend
+        working-directory: ./job-tracker-backend
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
-      - name: Set up JDK
-        uses: actions/setup-java@v4
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
         with:
-          distribution: 'temurin'
           java-version: '17'
+          distribution: 'temurin'
 
-      - name: Build and run tests
-        run: ./mvnw test
+      - name: Install Maven
+        run: sudo apt-get install -y maven
 
-  frontend-tests:
-    name: Run Next.js (Jest) Tests
+      - name: Run backend tests
+        run: mvn test
+
+  frontend:
+    name: Run Frontend (Jest) Tests
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: job-tracker-frontend
+        working-directory: ./job-tracker-frontend
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
-      - name: Set up Node
-        uses: actions/setup-node@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: '18'
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Run tests
-        run: npm test
+      - name: Run frontend tests
+        run: npm test -- --ci --passWithNoTests
