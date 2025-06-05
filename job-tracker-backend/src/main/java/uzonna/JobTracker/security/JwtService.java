@@ -2,6 +2,7 @@ package uzonna.JobTracker.security;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import uzonna.JobTracker.model.User;
 
@@ -11,10 +12,11 @@ import java.util.Date;
 @Service
 public class JwtService {
 
-    // This should be random and stored securely before production
-    private static final String SECRET_KEY = "your-256-bit-secret-key-must-be-at-least-32-characters";
+    private final Key key;
 
-    private final Key key = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
+    public JwtService(@Value("${jwt.secret}") String secret) {
+        this.key = Keys.hmacShaKeyFor(secret.getBytes());
+    }
 
     public String generateToken(User user) {
         return Jwts.builder()
@@ -49,4 +51,3 @@ public class JwtService {
         return expiration.before(new Date());
     }
 }
-
