@@ -1,8 +1,8 @@
 # 🧾 Job Application Tracker
 
-A fullstack job tracking application designed to help users manage their job search with clean UI, powerful search/filtering, and full CRUD functionality.
+A fullstack app to help users stay organized during the job search. Includes form-based job tracking, tag filtering, visual stats, and full CRUD support.
 
-Built with production-ready technologies, automated testing, and CI/CD pipelines for a modern development workflow.
+Built using technologies and tools you'd find in a real-world software team. This includes tests, Docker, and automated CI.
 
 ---
 
@@ -55,7 +55,7 @@ This app was built to replace spreadsheets and manual tracking methods for job s
 - `Jest` for frontend unit testing
 - `JUnit` for backend logic and API testing
 
-This project includes meaningful test coverage and automation, aligned with QA best practices and workflows.
+I've written and automated tests for key features, focusing on realistic scenarios and edge cases you'd expect in QA work.
 
 ### 🧪 Frontend Testing with Jest + React Testing Library
 
@@ -97,7 +97,7 @@ All controller-level logic is tested in isolation from the frontend, ensuring co
 
 - **GitHub Actions** for automated test pipelines on push/PR
 - **Dockerized backend** for consistent environment across development and deployment
-- Tests and deployment are integrated to ensure stable, production-ready builds
+- Helps catch bugs early and avoid broken builds before deployment.
 
 ---
 
@@ -132,3 +132,4 @@ mvn spring-boot:run
 cd ../job-tracker-frontend
 npm install
 npm run dev
+```
