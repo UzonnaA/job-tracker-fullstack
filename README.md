@@ -10,7 +10,7 @@ Built using technologies and tools you'd find in a real-world software team. Thi
 
 🌐 [View the live app](https://job-tracker-fullstack-rouge.vercel.app)  
 🔒 Use test credentials or register a new account to explore functionality  
-⏳ **Note**: The backend is hosted on Render's free tier. Initial cold starts may take **2–3 minutes** during registration or login.
+⏳ **Note**: The backend is hosted on Render's free tier. Initial cold starts may take **3-5 minutes** during registration or login.
 
 ---
 
