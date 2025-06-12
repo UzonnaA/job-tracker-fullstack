@@ -1,122 +1,95 @@
-# 🧾 Job Application Tracker
+# Job Application Tracker
 
-A full-stack app to help users stay organized during the job search. Includes form-based job tracking, tag filtering, visual stats, and full CRUD support.
+A simple full-stack tool I built to stay organized while applying for jobs. Instead of juggling spreadsheets, I wanted something cleaner that let me track applications, visualize progress, and focus on what matters most: getting hired.
 
-Built using technologies and tools you'd find in a real-world software team. This includes tests, Docker, and automated CI.
-
----
-
-## 🚀 Live Demo
-
-🌐 [View the live app](https://job-tracker-fullstack-rouge.vercel.app)  
-🔒 Use test credentials or register a new account to explore functionality  
-⏳ **Note**: The backend is hosted on Render's free tier. Initial cold starts may take **3-5 minutes** during registration or login.
+I built this using a tech stack you'd find in a real-world team. The backend uses Spring Boot, the frontend runs on React with Next.js, and I added testing on both ends. I also used Docker and GitHub Actions to get more hands-on with CI workflows.
 
 ---
 
-## 🎯 Project Purpose
+## Live Demo
 
-This app was built to replace spreadsheets and manual tracking methods for job seekers. It helps users manage job applications, track progress visually, and maintain focus throughout their job search journey.
-
----
-
-## 🛠️ Features
-
-### 🔐 **Authentication**
-- Secure registration and login (JWT-based)
-- Logout and session management
-
-### 📋 **Job Application Management**
-- Add new job applications with:
-  - Job Title
-  - Company
-  - Status (Applied, Interviewing, Offer, Rejected)
-  - Date
-  - Tags (Remote, Junior, Contract, JavaScript)
-
-### 🔍 **Search & Filtering**
-- Search applications by:
-  - Company name
-  - Status
-  - Tags
-
-### 📊 **Statistics Dashboard**
-- Displays application counts by status, company, and tag
-- Visual summary to track progress over time
-
-### ⚙️ **Settings Page**
-- Delete **all applications**
-- Delete **user account**
+🌐 [Try it here](https://job-tracker-fullstack-rouge.vercel.app)  
+🔐 You can sign up or use test credentials to explore features.  
+⚠️ Note: The backend runs on Render's free tier, so it might take 3 to 5 minutes to wake up.
 
 ---
 
-## ✅ Quality Assurance Focus
+## Why I Made This
 
-- `Jest` for frontend unit testing
-- `JUnit` for backend logic and API testing
-
-I've written and automated tests for key features, focusing on realistic scenarios and edge cases you'd expect in QA work.
-
-### 🧪 Frontend Testing with Jest + React Testing Library
-
-- **Authentication Flow**
-  - Tests for rendering login form and handling success/failure cases (`LoginPage.test.tsx`)
-- **Application Submission**
-  - Verifies form input behavior, tag addition/removal, and successful submission clears fields (`AddPage.test.tsx`)
-- **Search & Filtering**
-  - Tests input filters, fetch results, and company-based query handling (`SearchPage.test.tsx`)
-- **Settings Behavior**
-  - Confirms "Delete All Applications" and "Delete Account" buttons trigger correct API calls (`SettingsPage.test.tsx`)
-- **Chart Rendering**
-  - Verifies charts load and render correctly based on fetched data (`StatsPage.test.tsx`)
-- **Navbar Visibility**
-  - Tests authenticated vs unauthenticated state for navigation options (`Navbar.test.tsx`)
-
-### 🔧 Backend Testing with JUnit (Spring Boot)
-
-- **Create Application**
-  - Verifies new job applications are successfully saved to the database
-- **Get All Applications**
-  - Ensures a list of all applications is returned
-- **Get Application by ID**
-  - Confirms a specific job application can be retrieved correctly
-- **Update Application**
-  - Tests editing existing applications and verifies persistence
-- **Delete Application**
-  - Ensures a job application is deleted correctly
-- **Filter Applications**
-  - Covers query-based filtering (by company, status, tag)
-- **MockMvc Integration**
-  - Uses MockMvc for full HTTP-layer testing of controller endpoints
-
-All controller-level logic is tested in isolation from the frontend, ensuring correct REST behavior across CRUD operations.
+I was spending too much time manually tracking job applications in a spreadsheet. It was easy to lose track of where I'd applied or what stage things were at. This project gave me something I could actually use while practicing real-world skills like authentication, filtering logic, and test automation.
 
 ---
 
-## 🔁 CI/CD & DevOps
+## Features
 
-- **GitHub Actions** for automated test pipelines on push/PR
-- **Dockerized backend** for consistent environment across development and deployment
-- Helps catch bugs early and avoid broken builds before deployment.
+### Authentication
+- Login, registration, and logout using JWTs
+- Session control for user-specific access
+
+### Job Tracking
+- Add jobs with title, company, status, date, and tags
+- Edit, update, and delete entries
+
+### Search and Filter
+- Filter by company, status, or custom tags
+- Helps narrow down results quickly as your list grows
+
+### Stats Dashboard
+- See totals by company, status, and tag
+- Visual summaries to track your job search momentum
+
+### Settings
+- Option to delete your account or clear all saved applications
 
 ---
 
-## ⚙️ Tech Stack
+## Testing Focus
 
-| Frontend | Backend | Tools & DevOps |
-|----------|---------|----------------|
-| React + Next.js (TypeScript) | Java + Spring Boot | GitHub Actions |
-| Tailwind CSS | PostgreSQL | Docker |
-| Jest | JUnit | Vercel (frontend), Render (backend), Railway (PostgreSQL) |
+Testing was a big part of this project. I wrote both frontend and backend tests to catch bugs early and verify real user scenarios.
+
+### Frontend (Jest + React Testing Library)
+
+- Login flow with success and error states
+- Form behavior for adding jobs and managing tags
+- Search filters and result rendering
+- Settings page delete functions
+- Chart rendering and data checks
+- Navbar visibility based on login status
+
+### Backend (JUnit + MockMvc)
+
+- Create, read, update, and delete operations
+- Query filtering by company, status, and tags
+- HTTP-level tests for controller logic
 
 ---
 
-## 🧑‍💻 Getting Started (Local Setup)
+## CI and Deployment
 
-### Prerequisites
-- Docker
-- Java 17
-- Node.js 18+
+- GitHub Actions pipeline for automated test runs on push and PR
+- Backend is containerized with Docker
+- Deployed with Vercel (frontend), Render (backend), and Railway (database)
+
+---
+
+## Tech Stack
+
+| Frontend              | Backend              | DevOps and Tools     |
+|-----------------------|----------------------|-----------------------|
+| React + Next.js       | Java + Spring Boot   | GitHub Actions        |
+| TypeScript            | PostgreSQL           | Docker                |
+| Tailwind CSS          | JUnit                | Render, Vercel, Railway |
+| Jest                  | Spring Security (JWT)|                       |
+
+---
+
+## Future Improvements
+
+- Add email reminders for upcoming follow-ups
+- Let users attach resumes and parse metadata
+- Optional role-based access for shared dashboards
+
+
 
 ### Clone & Run
 
