@@ -1,6 +1,6 @@
 # 🧾 Job Application Tracker
 
-A fullstack app to help users stay organized during the job search. Includes form-based job tracking, tag filtering, visual stats, and full CRUD support.
+A full-stack app to help users stay organized during the job search. Includes form-based job tracking, tag filtering, visual stats, and full CRUD support.
 
 Built using technologies and tools you'd find in a real-world software team. This includes tests, Docker, and automated CI.
 
