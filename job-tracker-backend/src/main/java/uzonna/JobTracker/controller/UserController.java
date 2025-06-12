@@ -28,6 +28,7 @@ public class UserController {
         User user = userDetails.getUser();
 
         // First delete all applications
+        // Probably don't need to do this on inspection, but we'll leave it in at this stage
         jobApplicationRepository.deleteByUser(user);
 
         // Then delete user
